@@ -30,7 +30,6 @@ pip install -r requirements.txt
 ```
 # Google Cloud設定
 GOOGLE_CLOUD_PROJECT=your-project-id
-GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
 
 # API Keys
 GOOGLE_API_KEY=your-google-api-key

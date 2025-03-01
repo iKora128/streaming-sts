@@ -17,3 +17,6 @@ app_state.json
 
 # LLM conversation history
 llm_conversation_history.json
+
+# app logs
+app.log
