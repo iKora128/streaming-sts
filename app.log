@@ -170,3 +170,866 @@
 2025-03-02 00:01:53,345 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
 2025-03-02 00:01:53,345 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 7, st.session_state.responses: 7
 2025-03-02 00:01:53,345 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 7, 応答数: 7
+2025-03-02 00:33:15,113 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:33:15,114 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:33:15,226 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:15,226 - __main__ - INFO - セッション状態を更新します。転記数: 7, 応答数: 7
+2025-03-02 00:33:15,226 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:15,227 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 7, st.session_state.responses: 7
+2025-03-02 00:33:15,227 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 7, 応答数: 7
+2025-03-02 00:33:17,929 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:33:17,930 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:33:17,931 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:17,931 - __main__ - INFO - セッション状態を更新します。転記数: 7, 応答数: 7
+2025-03-02 00:33:17,932 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:17,932 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 7, st.session_state.responses: 7
+2025-03-02 00:33:17,932 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 7, 応答数: 7
+2025-03-02 00:33:17,934 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 00:33:17,934 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 00:33:17,934 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 00:33:17,934 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 00:33:18,409 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 00:33:18,409 - __main__ - INFO - LLMを初期化します。
+2025-03-02 00:33:18,409 - __main__ - INFO - LLMを初期化します。
+2025-03-02 00:33:18,433 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 00:33:18,433 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 00:33:18,620 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 00:33:18,621 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 00:33:18,661 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:33:18,661 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:33:18,662 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:18,662 - __main__ - INFO - セッション状態を更新します。転記数: 7, 応答数: 7
+2025-03-02 00:33:18,662 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 00:33:18,663 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 7, st.session_state.responses: 7
+2025-03-02 00:33:18,663 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 7, 応答数: 7
+2025-03-02 00:33:24,717 - __main__ - INFO - 音声認識結果（最終）: ちょっとこれで AI と会話ができるんだけどこのリアルタイムの音声の
+2025-03-02 00:33:24,807 - __main__ - INFO - キューから取得した文字起こし: ちょっとこれで AI と会話ができるんだけどこのリアルタイムの音声の
+2025-03-02 00:33:24,812 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 00:33:25,443 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 00:33:25,443 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい、音声の..."
+}
+```
+2025-03-02 00:33:25,444 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 00:33:25,444 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい、音声の..."
+2025-03-02 00:33:25,444 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: local variable '_current_transcript' referenced before assignment
+2025-03-02 00:33:25,444 - __main__ - ERROR - local variable '_current_transcript' referenced before assignment
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 292, in process_transcripts
+    _current_transcript += " " + transcript
+UnboundLocalError: local variable '_current_transcript' referenced before assignment
+2025-03-02 00:33:33,229 - __main__ - INFO - 音声認識結果（最終）: あれをなんでメインの R で書いてくれてないんだろうな 3月 かあー全然全然全然全然全然大丈夫です
+2025-03-02 00:33:33,274 - __main__ - INFO - キューから取得した文字起こし: あれをなんでメインの R で書いてくれてないんだろうな 3月 かあー全然全然全然全然全然大丈夫です
+2025-03-02 00:33:33,274 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 00:33:33,875 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 00:33:33,875 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "なるほど"
+}
+```
+2025-03-02 00:33:33,875 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 00:33:33,875 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="なるほど"
+2025-03-02 00:33:33,875 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 00:33:33,875 - __main__ - ERROR - LLMManager.call_model() got an unexpected keyword argument 'callback'
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 311, in process_transcripts
+    _llm_manager.call_model(
+TypeError: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 00:33:35,985 - __main__ - INFO - 音声認識結果（最終）:  飛んで大丈夫です
+2025-03-02 00:33:36,023 - __main__ - INFO - キューから取得した文字起こし:  飛んで大丈夫です
+2025-03-02 00:33:36,023 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 00:33:36,619 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 00:33:36,620 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "了解しました。"
+}
+```
+2025-03-02 00:33:36,620 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 00:33:36,620 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="了解しました。"
+2025-03-02 00:33:36,620 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 00:33:36,620 - __main__ - ERROR - LLMManager.call_model() got an unexpected keyword argument 'callback'
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 311, in process_transcripts
+    _llm_manager.call_model(
+TypeError: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 00:36:40,788 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:36:40,788 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:36:40,899 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:40,899 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 00:36:40,899 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:40,899 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 00:36:40,899 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 00:36:42,924 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:36:42,924 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:36:42,925 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:42,925 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 00:36:42,925 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:42,926 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 00:36:42,926 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 00:36:42,927 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 00:36:42,928 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 00:36:42,928 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 00:36:42,928 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 00:36:43,336 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 00:36:43,336 - __main__ - INFO - LLMを初期化します。
+2025-03-02 00:36:43,336 - __main__ - INFO - LLMを初期化します。
+2025-03-02 00:36:43,361 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 00:36:43,361 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 00:36:43,532 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 00:36:43,533 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 00:36:43,568 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 00:36:43,569 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 00:36:43,569 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:43,569 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 00:36:43,569 - __main__ - ERROR - 状態の読み込み中にエラーが発生しました: name 'json' is not defined
+2025-03-02 00:36:43,570 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 00:36:43,570 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 00:36:46,942 - __main__ - INFO - 音声認識結果（最終）: 録音開始してリアルタイムで
+2025-03-02 00:36:46,964 - __main__ - INFO - キューから取得した文字起こし: 録音開始してリアルタイムで
+2025-03-02 00:36:46,965 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 00:36:47,602 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 00:36:47,602 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい、録音を開始します。"
+}
+```
+2025-03-02 00:36:47,603 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 00:36:47,603 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい、録音を開始します。"
+2025-03-02 00:36:47,603 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: name '_state_lock' is not defined
+2025-03-02 00:36:47,603 - __main__ - ERROR - name '_state_lock' is not defined
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 287, in process_transcripts
+    with _state_lock:
+NameError: name '_state_lock' is not defined
+2025-03-02 00:36:53,899 - __main__ - INFO - 音声認識結果（最終）: 表示できてんじゃんろくにできてるとことは 何でこれできてないんでしょうか
+2025-03-02 00:36:54,000 - __main__ - INFO - キューから取得した文字起こし: 表示できてんじゃんろくにできてるとことは 何でこれできてないんでしょうか
+2025-03-02 00:36:54,002 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 00:36:54,577 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 00:36:54,578 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "ええ、そうですね。"
+}
+```
+2025-03-02 00:36:54,578 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 00:36:54,578 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="ええ、そうですね。"
+2025-03-02 00:36:54,578 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: name '_state_lock' is not defined
+2025-03-02 00:36:54,578 - __main__ - ERROR - name '_state_lock' is not defined
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 287, in process_transcripts
+    with _state_lock:
+NameError: name '_state_lock' is not defined
+2025-03-02 01:07:51,852 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:07:51,853 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:07:51,967 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:51,967 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:07:51,967 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:51,967 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:07:51,967 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:07:53,937 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:07:53,938 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:07:53,939 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:53,939 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:07:53,939 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:53,940 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:07:53,940 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:07:53,941 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 01:07:53,941 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 01:07:53,941 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 01:07:53,941 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 01:07:54,394 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 01:07:54,395 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:07:54,395 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:07:54,422 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 01:07:54,422 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 01:07:54,619 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:07:54,620 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:07:54,665 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:07:54,666 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:07:54,666 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:54,666 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:07:54,666 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:07:54,667 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:07:54,667 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:07:58,593 - __main__ - INFO - 音声認識結果（最終）: 録音してます これでリアルタイムの
+2025-03-02 01:07:58,604 - __main__ - INFO - キューから取得した文字起こし: 録音してます これでリアルタイムの
+2025-03-02 01:07:58,605 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:07:59,376 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:07:59,377 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい"
+}
+```
+2025-03-02 01:07:59,377 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:07:59,377 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい"
+2025-03-02 01:07:59,377 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:07:59,378 - __main__ - ERROR - st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 299, in process_transcripts
+    if len(st.session_state.turn_detection_results) >= 10:
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:08:00,807 - __main__ - INFO - 音声認識結果（最終）: あれが出てきますか
+2025-03-02 01:08:00,904 - __main__ - INFO - キューから取得した文字起こし: あれが出てきますか
+2025-03-02 01:08:00,904 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:08:01,525 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:08:01,526 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい？"
+}
+```
+2025-03-02 01:08:01,526 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:08:01,526 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい？"
+2025-03-02 01:08:01,526 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:08:01,526 - __main__ - ERROR - st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 299, in process_transcripts
+    if len(st.session_state.turn_detection_results) >= 10:
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:08:14,746 - __main__ - INFO - 音声認識結果（最終）:  なんで出てこないの これって終わった後にしか出せないの おかしくない リアルタイム出力できないんだっけ
+2025-03-02 01:08:14,762 - __main__ - INFO - キューから取得した文字起こし:  なんで出てこないの これって終わった後にしか出せないの おかしくない リアルタイム出力できないんだっけ
+2025-03-02 01:08:14,763 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:08:15,029 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:08:15,029 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:08:15,030 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:08:15,030 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:08:15,030 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:08:15,031 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:08:15,031 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:08:15,032 - __main__ - INFO - 録音停止ボタンがクリックされました。
+2025-03-02 01:08:15,032 - __main__ - INFO - 音声認識を停止します。
+2025-03-02 01:08:15,153 - __main__ - INFO - 文字起こし処理スレッドの終了を待機します。
+2025-03-02 01:08:15,417 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:08:15,418 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "なるほど、リアルタイム出力についてですね。"
+}
+```
+2025-03-02 01:08:15,418 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:08:15,418 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="なるほど、リアルタイム出力についてですね。"
+2025-03-02 01:08:15,419 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:08:15,419 - __main__ - ERROR - st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 452, in __getitem__
+    return self._getitem(widget_id, key)
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 497, in _getitem
+    raise KeyError
+KeyError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 130, in __getattr__
+    return self[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 101, in __getitem__
+    return get_session_state()[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/safe_session_state.py", line 96, in __getitem__
+    return self._state[key]
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state.py", line 454, in __getitem__
+    raise KeyError(_missing_key_error_message(key))
+KeyError: 'st.session_state has no key "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 299, in process_transcripts
+    if len(st.session_state.turn_detection_results) >= 10:
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/.venv/lib/python3.10/site-packages/streamlit/runtime/state/session_state_proxy.py", line 132, in __getattr__
+    raise AttributeError(_missing_attr_error_message(key))
+AttributeError: st.session_state has no attribute "turn_detection_results". Did you forget to initialize it? More info: https://docs.streamlit.io/develop/concepts/architecture/session-state#initialization
+2025-03-02 01:08:16,157 - __main__ - INFO - 音声認識を停止しました。
+2025-03-02 01:08:16,236 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:08:16,236 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:08:16,236 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:08:16,237 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:08:16,237 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:08:16,237 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:08:16,237 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:13:24,322 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:13:24,323 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:13:24,435 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:24,435 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:13:24,435 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:24,436 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:13:24,436 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:13:26,632 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:13:26,632 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:13:26,633 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:26,634 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:13:26,635 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:26,635 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:13:26,635 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:13:26,636 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 01:13:26,636 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 01:13:26,636 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 01:13:26,637 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 01:13:27,045 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 01:13:27,045 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:13:27,045 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:13:27,070 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 01:13:27,070 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 01:13:27,256 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:13:27,257 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:13:27,293 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:13:27,293 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:13:27,293 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:27,293 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:13:27,294 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 7, 応答数: 7
+2025-03-02 01:13:27,294 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:13:27,294 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:13:30,334 - __main__ - INFO - 音声認識結果（最終）: これって音声 どうなってますか
+2025-03-02 01:13:30,367 - __main__ - INFO - キューから取得した文字起こし: これって音声 どうなってますか
+2025-03-02 01:13:30,369 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:13:31,018 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:13:31,019 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "音声についてですね。"
+}
+```
+2025-03-02 01:13:31,020 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:13:31,020 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="音声についてですね。"
+2025-03-02 01:13:31,023 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:13:31,023 - __main__ - ERROR - LLMManager.call_model() got an unexpected keyword argument 'callback'
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 330, in process_transcripts
+    _llm_manager.call_model(
+TypeError: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:13:34,645 - __main__ - INFO - 音声認識結果（最終）:  リアルタイムの会話が
+2025-03-02 01:13:34,724 - __main__ - INFO - キューから取得した文字起こし:  リアルタイムの会話が
+2025-03-02 01:13:34,727 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:13:35,361 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:13:35,362 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい？"
+}
+```
+2025-03-02 01:13:35,362 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:13:35,362 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい？"
+2025-03-02 01:13:35,363 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:13:35,363 - __main__ - ERROR - LLMManager.call_model() got an unexpected keyword argument 'callback'
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 314, in process_transcripts
+    _llm_manager.call_model(
+TypeError: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:13:37,437 - __main__ - INFO - 音声認識結果（最終）: うまくいってない気がしますね
+2025-03-02 01:13:37,507 - __main__ - INFO - キューから取得した文字起こし: うまくいってない気がしますね
+2025-03-02 01:13:37,507 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:13:38,863 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:13:38,864 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい、どのような点がうまくいっていないと感じますか？"
+}
+```
+2025-03-02 01:13:38,864 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:13:38,864 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい、どのような点がうまくいっていないと感じますか？"
+2025-03-02 01:13:38,865 - __main__ - ERROR - 文字起こしの処理中にエラーが発生しました: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:13:38,865 - __main__ - ERROR - LLMManager.call_model() got an unexpected keyword argument 'callback'
+Traceback (most recent call last):
+  File "/Users/nagashimadaichi/Work/Livetoon/streaming-sts/app.py", line 314, in process_transcripts
+    _llm_manager.call_model(
+TypeError: LLMManager.call_model() got an unexpected keyword argument 'callback'
+2025-03-02 01:15:29,414 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:15:29,414 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:15:29,524 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:29,524 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:15:29,524 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:29,525 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:15:29,525 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:15:36,654 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:15:36,655 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:15:36,657 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:36,657 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:15:36,658 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:36,658 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:15:36,658 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:15:36,659 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 01:15:36,660 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 01:15:36,660 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 01:15:36,660 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 01:15:37,068 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 01:15:37,068 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:15:37,068 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:15:37,094 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 01:15:37,095 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 01:15:37,270 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:15:37,271 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:15:37,310 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:15:37,310 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:15:37,311 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:37,311 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:15:37,311 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 0, 応答数: 0
+2025-03-02 01:15:37,312 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:15:37,312 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:15:39,144 - __main__ - INFO - 音声認識結果（最終）: おはようございます
+2025-03-02 01:15:39,182 - __main__ - INFO - キューから取得した文字起こし: おはようございます
+2025-03-02 01:15:39,183 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:15:39,894 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:15:39,894 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "おはようございます。"
+}
+```
+2025-03-02 01:15:39,896 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:15:39,896 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="おはようございます。"
+2025-03-02 01:15:39,898 - __main__ - INFO - 会話完了と判断: 応答生成開始
+2025-03-02 01:15:39,898 - __main__ - INFO - LLM応答生成完了: モデル 'gemini-2.0-flash' は利用できません。利用可能なモデル: gemini-2.0-flash-lite, gemini-1.5-pro, gemini-1.5-flash, g...
+2025-03-02 01:15:47,861 - __main__ - INFO - 音声認識結果（最終）:  行けそうで 行けてないですね なんでこれが表示されてないんですか
+2025-03-02 01:15:47,903 - __main__ - INFO - キューから取得した文字起こし:  行けそうで 行けてないですね なんでこれが表示されてないんですか
+2025-03-02 01:15:47,905 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:15:48,579 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:15:48,579 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "表示されない原因を調べてみます。"
+}
+```
+2025-03-02 01:15:48,580 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:15:48,580 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="表示されない原因を調べてみます。"
+2025-03-02 01:15:48,580 - __main__ - INFO - 会話完了と判断: 応答生成開始
+2025-03-02 01:15:48,580 - __main__ - INFO - LLM応答生成完了: モデル 'gemini-2.0-flash' は利用できません。利用可能なモデル: gemini-2.0-flash-lite, gemini-1.5-pro, gemini-1.5-flash, g...
+2025-03-02 01:16:54,527 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:16:54,528 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:16:54,643 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:54,644 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:16:54,644 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:54,644 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:16:54,644 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:16:56,140 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:16:56,141 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:16:56,142 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:56,142 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:16:56,142 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:56,143 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:16:56,143 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:16:56,144 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 01:16:56,144 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 01:16:56,144 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 01:16:56,144 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 01:16:56,565 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 01:16:56,566 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:16:56,566 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:16:56,591 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 01:16:56,592 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 01:16:56,776 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:16:56,777 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:16:56,814 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:16:56,814 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:16:56,815 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:56,815 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:16:56,815 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:16:56,815 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:16:56,815 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:17:00,574 - __main__ - INFO - 音声認識結果（最終）: おはようございます これについてどう思いますか
+2025-03-02 01:17:00,613 - __main__ - INFO - キューから取得した文字起こし: おはようございます これについてどう思いますか
+2025-03-02 01:17:00,615 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:17:01,324 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:17:01,324 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "おはようございます。それについてどう思いますか？について、もう少し詳しく教えてください。"
+}
+```
+2025-03-02 01:17:01,325 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:17:01,325 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="おはようございます。それについてどう思いますか？について、もう少し詳しく教えてください。"
+2025-03-02 01:17:01,326 - __main__ - INFO - 会話継続と判断: 相槌="おはようございます。それについてどう思いますか？について、もう少し詳しく教えてください。"
+2025-03-02 01:17:06,162 - __main__ - INFO - 音声認識結果（最終）:  リアルタイムで音が入ってないですね
+2025-03-02 01:17:06,210 - __main__ - INFO - キューから取得した文字起こし:  リアルタイムで音が入ってないですね
+2025-03-02 01:17:06,210 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:17:06,847 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:17:06,848 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "状況を把握しました。"
+}
+```
+2025-03-02 01:17:06,848 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:17:06,848 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="状況を把握しました。"
+2025-03-02 01:17:06,849 - __main__ - INFO - 会話完了と判断: 応答生成開始
+2025-03-02 01:17:06,849 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:17:07,619 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:17:07,619 - __main__ - INFO - LLM応答生成完了: そうですね、何か問題が発生しているのかもしれません。具体的にどんな状況ですか？ もしかして、私が話している声が聞こえないということでしょうか？
+...
+2025-03-02 01:18:23,212 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:23,213 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:23,294 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:23,294 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:23,294 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:23,294 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:23,294 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:25,573 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:25,574 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:25,575 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:25,575 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:25,575 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:25,576 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:25,576 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:25,577 - __main__ - INFO - 録音開始ボタンがクリックされました。
+2025-03-02 01:18:25,577 - __main__ - INFO - 音声認識を開始します。
+2025-03-02 01:18:25,578 - __main__ - INFO - Speech-to-Textを初期化します。
+2025-03-02 01:18:25,578 - __main__ - INFO - Speech-to-Textを初期化します。プロジェクトID: livetoon-kaiwa
+2025-03-02 01:18:25,935 - __main__ - INFO - Speech-to-Textの初期化に成功しました。
+2025-03-02 01:18:25,936 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:18:25,936 - __main__ - INFO - LLMを初期化します。
+2025-03-02 01:18:25,959 - __main__ - INFO - LLMの初期化に成功しました。
+2025-03-02 01:18:25,959 - __main__ - INFO - マイクからの音声認識を開始します。
+2025-03-02 01:18:26,130 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:18:26,130 - __main__ - INFO - 文字起こし処理スレッドを開始します。
+2025-03-02 01:18:26,164 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:26,164 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:26,165 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:26,165 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:26,165 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:26,166 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:26,166 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:28,514 - __main__ - INFO - 音声認識結果（最終）: リアルタイムに会話できますか
+2025-03-02 01:18:28,542 - __main__ - INFO - キューから取得した文字起こし: リアルタイムに会話できますか
+2025-03-02 01:18:28,543 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:29,191 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:29,192 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "はい、できます。"
+}
+```
+2025-03-02 01:18:29,192 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:18:29,192 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="はい、できます。"
+2025-03-02 01:18:29,193 - __main__ - INFO - 会話完了と判断: 応答生成開始
+2025-03-02 01:18:29,193 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:29,795 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:29,795 - __main__ - INFO - LLM応答生成完了: はい、リアルタイムで会話できますよ！何か話しましょうか？
+...
+2025-03-02 01:18:32,567 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:32,567 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:32,569 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:32,569 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:32,569 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:32,569 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:32,569 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:32,572 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:32,572 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:32,572 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:32,573 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:32,618 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:32,619 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:32,619 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:32,620 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:32,620 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 1, 応答数: 1
+2025-03-02 01:18:32,620 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:32,620 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:32,623 - __main__ - INFO - 音声認識結果（最終）:  いいですね 悪くないと思います
+2025-03-02 01:18:32,722 - __main__ - INFO - キューから取得した文字起こし:  いいですね 悪くないと思います
+2025-03-02 01:18:32,722 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:33,324 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:33,326 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": false,
+  "acknowledgement": "ありがとうございます。"
+}
+```
+2025-03-02 01:18:33,326 - __main__ - INFO - LLM判定を使用: False
+2025-03-02 01:18:33,326 - __main__ - INFO - 解析結果: 会話継続=False, 相槌="ありがとうございます。"
+2025-03-02 01:18:33,328 - __main__ - INFO - 会話完了と判断: 応答生成開始
+2025-03-02 01:18:33,328 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:34,002 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:34,003 - __main__ - INFO - LLM応答生成完了: ありがとうございます！何か興味のある話題はありますか？どんなことでも話せますよ。
+...
+2025-03-02 01:18:35,090 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:35,091 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:35,092 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:35,092 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:35,093 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:35,093 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:35,093 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:35,095 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:35,095 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:35,096 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:35,097 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:35,143 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:35,143 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:35,144 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:35,144 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:35,145 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:35,145 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:35,145 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,503 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:36,503 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:36,504 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:36,504 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,505 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:36,505 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:36,505 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,507 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:36,507 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,508 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:36,508 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:36,553 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:36,553 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:36,554 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:36,554 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,554 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:36,555 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:36,555 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:36,610 - __main__ - INFO - 音声認識結果（最終）:  そうですね
+2025-03-02 01:18:36,656 - __main__ - INFO - キューから取得した文字起こし:  そうですね
+2025-03-02 01:18:36,656 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:37,239 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:37,240 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい"
+}
+```
+2025-03-02 01:18:37,240 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:18:37,240 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい"
+2025-03-02 01:18:37,242 - __main__ - INFO - 会話継続と判断: 相槌="はい"
+2025-03-02 01:18:38,525 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:38,526 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:38,527 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:38,527 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:38,527 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:38,528 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:38,528 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:38,530 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:38,530 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:38,531 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:38,531 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:38,581 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:38,582 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:38,582 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:38,582 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:38,583 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:38,583 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:38,583 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:39,394 - __main__ - INFO - 音声認識結果（最終）:  何が起きてますかね あなた
+2025-03-02 01:18:39,455 - __main__ - INFO - キューから取得した文字起こし:  何が起きてますかね あなた
+2025-03-02 01:18:39,456 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:40,092 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:40,092 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:40,093 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:40,093 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:40,093 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:40,094 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:40,094 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:40,096 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:40,096 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:40,097 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:40,097 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:40,143 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:40,144 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "何が起きてるかですね？"
+}
+```
+2025-03-02 01:18:40,144 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:18:40,144 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="何が起きてるかですね？"
+2025-03-02 01:18:40,145 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:40,145 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:40,146 - __main__ - INFO - 会話継続と判断: 相槌="何が起きてるかですね？"
+2025-03-02 01:18:40,146 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:40,146 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:40,147 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:40,147 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:40,147 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,066 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:41,066 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:41,067 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:41,067 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,068 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:41,068 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:41,068 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,071 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:18:41,071 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,072 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:41,072 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:41,122 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:41,122 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:41,123 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:41,123 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,124 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:41,124 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:41,124 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:41,898 - __main__ - INFO - 音声認識結果（最終）:  画面を
+2025-03-02 01:18:41,956 - __main__ - INFO - キューから取得した文字起こし:  画面を
+2025-03-02 01:18:41,957 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:42,584 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:42,584 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "はい？"
+}
+```
+2025-03-02 01:18:42,584 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:18:42,584 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="はい？"
+2025-03-02 01:18:42,585 - __main__ - INFO - 会話継続と判断: 相槌="はい？"
+2025-03-02 01:18:50,548 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:50,549 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:50,550 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:50,550 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:50,551 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:50,551 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:50,551 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:18:50,553 - __main__ - INFO - 録音停止ボタンがクリックされました。
+2025-03-02 01:18:50,553 - __main__ - INFO - 音声認識を停止します。
+2025-03-02 01:18:50,679 - __main__ - INFO - 文字起こし処理スレッドの終了を待機します。
+2025-03-02 01:18:50,681 - __main__ - INFO - 音声認識結果（最終）: するといい感じにできるんですね じゃあ まあいいんだ ログ ログが それを表示できない時ってことね OK
+2025-03-02 01:18:50,745 - __main__ - INFO - キューから取得した文字起こし: するといい感じにできるんですね じゃあ まあいいんだ ログ ログが それを表示できない時ってことね OK
+2025-03-02 01:18:50,746 - google_genai.models - INFO - AFC is enabled with max remote calls: 10.
+2025-03-02 01:18:51,328 - google_genai.models - INFO - AFC remote call 1 is done.
+2025-03-02 01:18:51,329 - __main__ - INFO - ターン判定結果: ```json
+{
+  "continueConversation": true,
+  "acknowledgement": "なるほど"
+}
+```
+2025-03-02 01:18:51,329 - __main__ - INFO - LLM判定を使用: True
+2025-03-02 01:18:51,329 - __main__ - INFO - 解析結果: 会話継続=True, 相槌="なるほど"
+2025-03-02 01:18:51,330 - __main__ - INFO - 会話継続と判断: 相槌="なるほど"
+2025-03-02 01:18:51,684 - __main__ - INFO - 音声認識を停止しました。
+2025-03-02 01:18:51,719 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:18:51,719 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:18:51,720 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:51,720 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:18:51,720 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:18:51,720 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:18:51,720 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:11,621 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:11,621 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:11,622 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:11,622 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:11,622 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:11,622 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:11,623 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:11,624 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:19:11,624 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:11,624 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:11,624 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:11,670 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:11,670 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:11,670 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:11,670 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:11,670 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:11,671 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:11,671 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:12,969 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:12,969 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:12,971 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:12,971 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:12,971 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:12,972 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:12,972 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:12,974 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:19:12,974 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:12,975 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:12,975 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:13,021 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:13,021 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:13,021 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:13,022 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:13,022 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:13,022 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:13,023 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:14,239 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:14,239 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:14,240 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:14,240 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:14,241 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:14,241 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:14,241 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:14,242 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:19:14,242 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:14,243 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:14,243 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:14,276 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:14,276 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:14,277 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:14,277 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:14,277 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:14,277 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:14,278 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:15,625 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:15,625 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:15,626 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:15,626 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:15,626 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:15,627 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:15,627 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:15,628 - __main__ - INFO - 画面更新ボタンがクリックされました。
+2025-03-02 01:19:15,628 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:15,629 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:15,629 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:15,663 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:15,663 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:15,664 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:15,664 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:15,665 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:15,665 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:15,665 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:23,227 - __main__ - INFO - アプリケーションを起動します。
+2025-03-02 01:19:23,227 - __main__ - INFO - アプリケーションを開始します。
+2025-03-02 01:19:23,228 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:23,229 - __main__ - INFO - セッション状態を更新します。転記数: 0, 応答数: 0
+2025-03-02 01:19:23,229 - __main__ - INFO - ファイルから状態を読み込みました。転記数: 2, 応答数: 2
+2025-03-02 01:19:23,229 - __main__ - INFO - セッション状態を更新しました。st.session_state.transcripts: 0, st.session_state.responses: 0
+2025-03-02 01:19:23,229 - __main__ - INFO - 起動時にセッション状態を更新しました。転記数: 0, 応答数: 0
+2025-03-02 01:19:23,232 - __main__ - INFO - 会話履歴保存ボタンがクリックされました。
+2025-03-02 01:19:23,232 - __main__ - INFO - 保存する会話履歴がありません。

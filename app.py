@@ -10,6 +10,7 @@ from typing import List, Tuple
 
 import streamlit as st
 from dotenv import load_dotenv
+import traceback  # トレースバック情報を出力するために追加
 
 from speech_to_text import SpeechToTextStreaming
 from llm_manager import LLMManager
@@ -79,6 +80,10 @@ if "current_response" not in st.session_state:
 if "is_generating" not in st.session_state:
     st.session_state.is_generating = False
 
+# セッション状態に判定結果を保存するための初期化
+if 'turn_detection_results' not in st.session_state:
+    st.session_state.turn_detection_results = []
+
 # LLMのシステムプロンプト
 AIZUCHI_SYSTEM_PROMPT = """
 あなたは会話の相手です。ユーザーの発言に対して、相槌を打つように短く返答してください。
@@ -113,6 +118,24 @@ TURN_DETECTION_PROMPT = """
 
 会話が完結している場合は必ずfalseを返してください。特に質問や明確な意見表明があった場合は必ずfalseです。
 """
+
+# グローバル変数の定義
+_state_lock = threading.RLock()  # スレッドセーフな操作のためのロック
+
+# 実験的な機能を有効化
+st.set_page_config(
+    page_title="リアルタイム音声会話",
+    page_icon="🎤",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items={
+        'About': "リアルタイム音声会話アプリケーション"
+    }
+)
+
+# 更新間隔を短くする（実験的）
+if "update_frequency" not in st.session_state:
+    st.session_state.update_frequency = 0.1  # 100ミリ秒ごとに更新
 
 def initialize_stt():
     """
@@ -208,53 +231,45 @@ def on_llm_stream(chunk: str):
     
     logger.debug(f"LLMストリーミング: {chunk}")  # 詳細なログ
 
-def save_state_to_file():
-    """
-    グローバル変数の状態をファイルに保存する
-    """
-    global _transcripts, _responses, _current_transcript, _current_response
-    
+def _save_state():
+    """状態をファイルに保存"""
     state = {
         "transcripts": _transcripts,
         "responses": _responses,
         "current_transcript": _current_transcript,
         "current_response": _current_response,
-        "timestamp": time.time()
+        "turn_detection_results": st.session_state.get("turn_detection_results", [])  # 追加
     }
     
-    try:
-        with open(_STATE_FILE, "w", encoding="utf-8") as f:
-            import json
-            json.dump(state, f, ensure_ascii=False, indent=2)
-        logger.info(f"状態をファイルに保存しました。転記数: {len(_transcripts)}, 応答数: {len(_responses)}")
-    except Exception as e:
-        logger.error(f"状態のファイル保存中にエラーが発生しました: {str(e)}")
+    with open(_STATE_FILE, "w", encoding="utf-8") as f:
+        import json
+        json.dump(state, f, ensure_ascii=False, indent=2)
 
-def load_state_from_file():
-    """
-    ファイルからグローバル変数の状態を読み込む
-    """
-    global _transcripts, _responses, _current_transcript, _current_response
+def _load_state():
+    """ファイルから状態を読み込む"""
+    import json  # jsonモジュールをここでインポート
     
-    if not os.path.exists(_STATE_FILE):
-        logger.info("状態ファイルが存在しません。")
-        return False
-    
-    try:
-        with open(_STATE_FILE, "r", encoding="utf-8") as f:
-            import json
-            state = json.load(f)
+    if os.path.exists(_STATE_FILE):
+        try:
+            with open(_STATE_FILE, "r", encoding="utf-8") as f:
+                state = json.load(f)
             
-        _transcripts = state.get("transcripts", [])
-        _responses = state.get("responses", [])
-        _current_transcript = state.get("current_transcript", "")
-        _current_response = state.get("current_response", "")
-        
-        logger.info(f"ファイルから状態を読み込みました。転記数: {len(_transcripts)}, 応答数: {len(_responses)}")
-        return True
-    except Exception as e:
-        logger.error(f"状態のファイル読み込み中にエラーが発生しました: {str(e)}")
-        return False
+            # 既存の状態を読み込む
+            _transcripts = state.get("transcripts", [])
+            _responses = state.get("responses", [])
+            _current_transcript = state.get("current_transcript", "")
+            _current_response = state.get("current_response", "")
+            
+            # ターン判定結果の読み込み
+            if "turn_detection_results" in state:
+                st.session_state.turn_detection_results = state["turn_detection_results"]
+            
+            logger.info(f"ファイルから状態を読み込みました。転記数: {len(_transcripts)}, 応答数: {len(_responses)}")
+            return _transcripts, _responses
+        except Exception as e:
+            logger.error(f"状態の読み込み中にエラーが発生しました: {str(e)}")
+    
+    return [], []
 
 def process_transcripts():
     """
@@ -269,115 +284,165 @@ def process_transcripts():
     while _is_listening:
         try:
             if not _transcript_queue.empty():
+                # 文字起こしを取得した後
                 transcript = _transcript_queue.get(timeout=0.1)
                 logger.info(f"キューから取得した文字起こし: {transcript}")
                 
-                # テキスト長や質問形式に基づく簡易判定（バックアップとして）
-                has_question_mark = "?" in transcript or "？" in transcript
-                is_short = len(transcript.strip()) < 10
-                likely_question = any(q in transcript for q in ["何", "どう", "なぜ", "いつ", "どこ", "だれ", "誰", "ですか"])
+                # グローバル変数に保存（これはスレッドセーフ）
+                global _current_transcript
+                _current_transcript = transcript
                 
-                # Call LLM to decide turn-taking
+                # LLMを使用してターン判定
                 turn_response = _llm_manager.call_model(
                     prompt=transcript,
                     system_prompt=TURN_DETECTION_PROMPT,
-                    model="gemini-2.0-flash-lite",  # より軽量なモデルを使用
+                    model="gemini-2.0-flash-lite",
                     stream=False
                 )
                 logger.info(f"ターン判定結果: {turn_response}")
                 
-                # JSONパース処理の改善
-                continue_conversation = True  # デフォルト値
-                ack = "なるほど"  # デフォルト値
+                # 改善されたJSONパーサーを使用
+                continue_conversation, ack = parse_turn_decision(turn_response, transcript)
+                logger.info(f"解析結果: 会話継続={continue_conversation}, 相槌=\"{ack}\"")
                 
-                try:
-                    # 正規表現でJSONを抽出
-                    json_match = re.search(r'\{.*?\}', turn_response.replace('\n', ' '), re.DOTALL)
-                    if json_match:
-                        try:
-                            turn_data = json.loads(json_match.group(0))
-                            continue_conversation = turn_data.get("continueConversation", True)
-                            ack = turn_data.get("acknowledgement", "なるほど")
-                        except json.JSONDecodeError:
-                            # JSON解析に失敗した場合はバックアップロジックを使用
-                            continue_conversation = not (has_question_mark or likely_question)
-                            
-                    else:
-                        # JSONが見つからない場合はバックアップロジックを使用
-                        continue_conversation = not (has_question_mark or likely_question)
-                        if "acknowledgement" in turn_response:
-                            ack_match = re.search(r'"acknowledgement":\s*"([^"]+)"', turn_response)
-                            if ack_match:
-                                ack = ack_match.group(1)
-                except Exception as e:
-                    # エラーが発生した場合はバックアップロジックを使用
-                    logger.error(f"ターン判定の解析中にエラー: {str(e)}")
-                    continue_conversation = not (has_question_mark or likely_question)
+                # 判定結果をセッション状態に保存
+                turn_result = {
+                    "transcript": transcript,
+                    "continue_conversation": continue_conversation,
+                    "acknowledgement": ack,
+                    "raw_response": turn_response,
+                    "timestamp": time.time()
+                }
                 
-                # バックアップロジックによる追加チェック
-                if likely_question or has_question_mark:
-                    # 質問の形式が明確な場合は、常にfalseに強制
-                    continue_conversation = False
-                    logger.info(f"バックアップロジックにより会話継続をFalseに設定（質問検出）")
+                # スレッドセーフに状態を更新
+                with _state_lock:
+                    # 最大10件まで保存
+                    if "turn_detection_results" not in st.session_state:
+                        st.session_state.turn_detection_results = []
+                    
+                    if len(st.session_state.turn_detection_results) >= 10:
+                        st.session_state.turn_detection_results.pop(0)
+                    st.session_state.turn_detection_results.append(turn_result)
+                    _save_state()  # 状態を保存
                 
-                # 結果をログに記録
-                logger.info(f"最終判定: 会話継続={continue_conversation}, 相槌=\"{ack}\"")
-                
+                # 会話状態の更新と応答処理
                 if continue_conversation:
-                    # ユーザーが継続中: 短い相槌を返し、コンテキストを蓄積
-                    _accumulated_context += " " + transcript
-                    _responses.append(ack)
-                    _transcripts.append(transcript)
+                    # 会話継続の場合は相槌を返す
+                    logger.info(f"会話継続と判断: 相槌=\"{ack}\"")
                     
-                    # 相槌のストリーミングシミュレーション
-                    _current_response = ""  # 現在の応答をリセット
-                    for char in ack:
-                        _current_response += char  # 文字を追加
-                        on_llm_stream(char)
-                        time.sleep(0.01)  # 文字ごとに若干の遅延
-                    
-                    logger.info(f"会話継続中: 蓄積内容=\"{_accumulated_context}\"")
+                    # 相槌を表示するだけで、LLM応答は生成しない
+                    with _state_lock:
+                        _current_transcript = transcript
+                        _current_response = ack
+                        _update_ui = True
+                        _last_ui_update_time = time.time()
                 else:
-                    # ユーザーの発言が完了: 完全な応答を生成
-                    combined_prompt = _accumulated_context + " " + transcript if _accumulated_context.strip() else transcript
-                    logger.info(f"会話完了: 完全な応答を生成します。入力=\"{combined_prompt}\"")
-                    
-                    # LLM応答生成の進行状況を示すフラグを設定
+                    # 会話完了の場合はLLM応答を生成
+                    logger.info("会話完了と判断: 応答生成開始")
                     _is_generating = True
-                    _current_response = ""  # 現在の応答をリセット
                     
-                    # ストリーミングを使用してLLMを呼び出し
-                    _llm_manager.call_model(
-                        prompt=combined_prompt,
-                        system_prompt=CONVERSATION_SYSTEM_PROMPT,
-                        model="gemini-2.0-flash-lite",
-                        stream=True,
-                        stream_callback=on_llm_stream
-                    )
-                    
-                    # 注：ストリーミングの場合、応答はon_llm_streamコールバックを通じて処理され、
-                    # その結果を_current_responseに蓄積し、最終的に_responsesに追加する
-                    _responses.append(_current_response)
-                    _transcripts.append(combined_prompt)
-                    _accumulated_context = ""  # 蓄積コンテキストをクリア
-                
-                # ステータスフラグを更新
-                _is_generating = False
-                _update_ui = True
-                _force_update = True
-                _last_ui_update_time = time.time()
-                save_state_to_file()
-            
-            time.sleep(0.1)  # ポーリング間隔
-            
-        except queue.Empty:
-            time.sleep(0.1)
+                    try:
+                        # LLM応答の生成
+                        response_text = ""
+                        
+                        # 会話履歴を構築
+                        conversation_history = ""
+                        for i in range(min(len(_transcripts), len(_responses))):
+                            conversation_history += f"ユーザー: {_transcripts[i]}\nAI: {_responses[i]}\n"
+                        
+                        # 現在の会話コンテキストを追加
+                        current_context = f"{conversation_history}ユーザー: {transcript}\nAI: "
+                        
+                        # LLM応答の生成（モデル名を修正）
+                        response_text = _llm_manager.call_model(
+                            prompt=current_context,
+                            system_prompt=CONVERSATION_SYSTEM_PROMPT,
+                            model="gemini-2.0-flash-lite", 
+                            stream=False
+                        )
+                        
+                        logger.info(f"LLM応答生成完了: {response_text[:100]}...")
+                        
+                        # 応答を保存
+                        with _state_lock:
+                            _transcripts.append(transcript)
+                            _responses.append(response_text)
+                            _current_transcript = transcript
+                            _current_response = response_text
+                            _update_ui = True
+                            _force_update = True
+                            _last_ui_update_time = time.time()
+                            _save_state()
+                    except Exception as e:
+                        logger.error(f"LLM応答生成中にエラーが発生しました: {str(e)}")
+                        logger.error(str(e))
+                        traceback.print_exc()
+                    finally:
+                        _is_generating = False
         except Exception as e:
             logger.error(f"文字起こしの処理中にエラーが発生しました: {str(e)}")
-            logger.exception(e)  # スタックトレースを記録
-            time.sleep(1)  # エラー発生時は少し待機
+            logger.error(str(e))
+            traceback.print_exc()
+        
+        time.sleep(0.1)  # CPUの使用率を下げるために短いスリープ
+
+def parse_turn_decision(turn_response, transcript):
+    """
+    LLMを主体としたターン判定解析器（ヒューリスティックはバックアップのみ）
+    """
+    import json
+    import re
     
-    logger.info("文字起こし処理スレッドを終了します。")
+    # デフォルト値
+    continue_conversation = True
+    ack = "なるほど"
+    
+    # 1. LLM応答からJSONを直接解析（メイン方法）
+    try:
+        json_match = re.search(r'\{.*\}', turn_response, re.DOTALL)
+        if json_match:
+            json_str = json_match.group(0)
+            turn_data = json.loads(json_str)
+            continue_conversation = turn_data.get("continueConversation", True)
+            ack = turn_data.get("acknowledgement", "なるほど")
+            logger.info(f"LLM判定を使用: {continue_conversation}")
+            return continue_conversation, ack
+    except Exception as e:
+        logger.warning(f"JSON解析エラー: {str(e)}")
+    
+    # 2. 正規表現で個別フィールド抽出（バックアップ1）
+    try:
+        continue_match = re.search(r'"continueConversation"\s*:\s*(true|false)', turn_response)
+        ack_match = re.search(r'"acknowledgement"\s*:\s*"([^"]+)"', turn_response)
+        
+        if continue_match:
+            continue_conversation = continue_match.group(1).lower() == "true"
+            logger.info(f"continueConversation正規表現抽出: {continue_conversation}")
+        
+        if ack_match:
+            ack = ack_match.group(1)
+            logger.info(f"acknowledgement正規表現抽出: {ack}")
+        
+        if continue_match:  # continueConversationの値が抽出できていればOK
+            return continue_conversation, ack
+    except Exception as e:
+        logger.warning(f"正規表現抽出エラー: {str(e)}")
+    
+    # 3. LLM応答テキスト内の単語に基づく簡易判定（バックアップ2）
+    # これはまだLLMの応答に基づいている
+    if "true" in turn_response.lower():
+        continue_conversation = True
+        logger.info("応答テキスト内の'true'に基づき会話継続と判定")
+    elif "false" in turn_response.lower():
+        continue_conversation = False
+        logger.info("応答テキスト内の'false'に基づき会話完了と判定")
+    
+    # 最後に質問検出だけはオーバーライド（重要なケース）
+    if "?" in transcript or "？" in transcript or any(q in transcript for q in ["何", "どう", "なぜ", "いつ", "どこ", "だれ", "誰", "ですか"]):
+        continue_conversation = False
+        logger.info("質問検出によるオーバーライド: 会話完了")
+    
+    return continue_conversation, ack
 
 def start_listening():
     """
@@ -468,7 +533,7 @@ def clear_history():
     st.session_state.current_transcript = ""
     
     # ファイルに状態を保存
-    save_state_to_file()
+    _save_state()
     
     _update_ui = True
     
@@ -488,7 +553,7 @@ def update_session_state():
         _transcripts = _transcripts[:len(_responses)]
     
     # ファイルから最新の状態を読み込む
-    load_state_from_file()
+    _load_state()
     
     # セッション状態を更新
     st.session_state.transcripts = _transcripts.copy()
@@ -631,20 +696,33 @@ def main():
     """
     メイン関数
     """
+    # セッション状態の初期化
+    if "transcripts" not in st.session_state:
+        st.session_state.transcripts = []
+    if "responses" not in st.session_state:
+        st.session_state.responses = []
+    if "current_transcript" not in st.session_state:
+        st.session_state.current_transcript = ""
+    if "current_response" not in st.session_state:
+        st.session_state.current_response = ""
+    if "is_listening" not in st.session_state:
+        st.session_state.is_listening = False
+    if "is_generating" not in st.session_state:
+        st.session_state.is_generating = False
+    if "last_update_time" not in st.session_state:
+        st.session_state.last_update_time = time.time()
+    # ここに追加 - ターン判定結果の初期化
+    if "turn_detection_results" not in st.session_state:
+        st.session_state.turn_detection_results = []
+    
     global _transcripts, _responses, _current_transcript, _current_response, _update_ui, _last_ui_update_time, _force_update, _is_generating
     
     logger.info("アプリケーションを開始します。")
     
-    st.set_page_config(
-        page_title="リアルタイム音声会話",
-        page_icon="🎤",
-        layout="wide"
-    )
-    
     st.title("🎤 リアルタイム音声会話")
     
     # ファイルから状態を読み込む
-    load_state_from_file()
+    _load_state()
     
     # 起動時にグローバル変数からセッション状態を更新
     update_session_state()
@@ -723,172 +801,134 @@ def main():
         5. 「履歴クリア」ボタンをクリックして会話履歴をクリアします。
         6. 「会話履歴を保存」ボタンをクリックしてHTML形式で保存します。
         """)
-    
-    # 自動更新のためのプレースホルダー
-    update_placeholder = st.empty()
-    
-    # ファイルの更新時刻を確認
-    try:
-        file_modified_time = os.path.getmtime(_STATE_FILE) if os.path.exists(_STATE_FILE) else 0
-    except:
-        file_modified_time = 0
-    
-    # ファイルが更新されている場合はセッション状態を更新
-    if file_modified_time > st.session_state.last_update_time:
-        logger.info("ファイルが更新されているため、セッション状態を更新します。")
-        load_state_from_file()
-        update_session_state()
-    
-    # グローバル変数からセッション状態を更新（UIの更新フラグがセットされている場合）
-    current_time = time.time()
-    if _update_ui or _force_update or (auto_refresh and current_time - st.session_state.last_update_time > 1):
-        update_session_state()
-        _update_ui = False
         
-        # 強制更新フラグがセットされている場合または自動更新が有効で最後のUI更新から3秒以上経過している場合は再読み込み
-        if _force_update or (auto_refresh and current_time - _last_ui_update_time < 10 and _last_ui_update_time > st.session_state.last_update_time):
-            logger.info("UIを再読み込みします。")
-            time.sleep(0.1)
-            st.rerun()
+        # ターン判定結果表示の切り替え（新規追加）
+        show_turn_detection = st.checkbox("ターン判定結果を表示", value=True)
     
-    # デバッグ情報
-    st.sidebar.subheader("デバッグ情報")
-    st.sidebar.write(f"グローバル転記数: {len(_transcripts)}")
-    st.sidebar.write(f"グローバル応答数: {len(_responses)}")
-    st.sidebar.write(f"セッション転記数: {len(st.session_state.transcripts)}")
-    st.sidebar.write(f"セッション応答数: {len(st.session_state.responses)}")
-    if os.path.exists(_STATE_FILE):
-        st.sidebar.write(f"状態ファイル更新: {time.strftime('%H:%M:%S', time.localtime(file_modified_time))}")
+    # メインコンテンツ
+    st.title("リアルタイム音声会話")
     
-    # メイン画面 - 吹き出し形式の会話表示
-    st.header("会話履歴")
+    # タブを使って表示を分ける
+    tab1, tab2, tab3 = st.tabs(["🎤 リアルタイム会話", "🔄 ターン判定", "📝 会話履歴"])
     
-    # CSSスタイルを追加
-    st.markdown("""
-    <style>
-    .chat-container {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 20px;
-    }
-    .message {
-        display: flex;
-        margin-bottom: 10px;
-    }
-    .user-message {
-        justify-content: flex-end;
-    }
-    .ai-message {
-        justify-content: flex-start;
-    }
-    .message-bubble {
-        max-width: 70%;
-        padding: 10px 15px;
-        border-radius: 18px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-    }
-    .user-bubble {
-        background-color: #dcf8c6;
-        border-bottom-right-radius: 5px;
-    }
-    .ai-bubble {
-        background-color: #ffffff;
-        border: 1px solid #e5e5e5;
-        border-bottom-left-radius: 5px;
-    }
-    .timestamp {
-        font-size: 0.7em;
-        color: #999;
-        margin-top: 5px;
-        text-align: right;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-    
-    # 現在の文字起こしと応答（リアルタイム表示）
-    chat_container = st.container()
-    
-    with chat_container:
-        # 現在の文字起こしがある場合は表示
-        if st.session_state.current_transcript:
-            # HTMLエスケープ処理
-            current_transcript_escaped = st.session_state.current_transcript.replace("<", "&lt;").replace(">", "&gt;")
+    with tab1:
+        # リアルタイム会話表示
+        st.subheader("現在の会話")
+        
+        # 録音状態の表示
+        if st.session_state.is_listening:
+            st.info("🎤 録音中... マイクに向かって話しかけてください")
             
-            st.markdown(f"""
-            <div class="chat-container">
-                <div class="message user-message">
-                    <div class="message-bubble user-bubble">
-                        <div>{current_transcript_escaped}</div>
-                        <div class="timestamp">現在の発言</div>
+            # 最新のターン判定結果があれば表示
+            if "turn_detection_results" in st.session_state and st.session_state.turn_detection_results:
+                latest_result = st.session_state.turn_detection_results[-1]
+                st.markdown(
+                    f"""
+                    <div style="padding: 10px; border-radius: 5px; background-color: #f0f2f6; margin-bottom: 10px;">
+                        <strong>あなた (リアルタイム):</strong> {latest_result["transcript"]}
                     </div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # 応答生成中の場合は表示
-        if st.session_state.is_generating and st.session_state.current_response:
-            # HTMLエスケープ処理
-            current_response_escaped = st.session_state.current_response.replace("<", "&lt;").replace(">", "&gt;")
-            
-            st.markdown(f"""
-            <div class="chat-container">
-                <div class="message ai-message">
-                    <div class="message-bubble ai-bubble">
-                        <div>{current_response_escaped}</div>
-                        <div class="timestamp">生成中...</div>
-                    </div>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # 過去の会話履歴を表示
-        if st.session_state.transcripts and st.session_state.responses:
-            chat_history = ""
-            for i in range(len(st.session_state.transcripts) - 1, -1, -1):
-                # HTMLエスケープ処理
-                transcript_escaped = st.session_state.transcripts[i].replace("<", "&lt;").replace(">", "&gt;")
+                    """, 
+                    unsafe_allow_html=True
+                )
                 
-                # ユーザーメッセージ
-                chat_history += f"""
-                <div class="message user-message">
-                    <div class="message-bubble user-bubble">
-                        <div>{transcript_escaped}</div>
+                # 相槌または応答を表示
+                st.markdown(
+                    f"""
+                    <div style="padding: 10px; border-radius: 5px; background-color: #e6f7ff; margin-bottom: 10px;">
+                        <strong>AI (リアルタイム):</strong> {latest_result["acknowledgement"]}
                     </div>
-                </div>
-                """
-                
-                # AIメッセージ
-                if i < len(st.session_state.responses):
-                    # HTMLエスケープ処理
-                    response_escaped = st.session_state.responses[i].replace("<", "&lt;").replace(">", "&gt;")
-                    
-                    chat_history += f"""
-                    <div class="message ai-message">
-                        <div class="message-bubble ai-bubble">
-                            <div>{response_escaped}</div>
-                        </div>
-                    </div>
-                    """
-            
-            st.markdown(f'<div class="chat-container">{chat_history}</div>', unsafe_allow_html=True)
+                    """, 
+                    unsafe_allow_html=True
+                )
         else:
-            st.info("会話履歴はまだありません。マイクに向かって話しかけてください。")
+            st.warning("⏸️ 録音停止中")
+        
+        # 現在の文字起こしと応答を表示
+        if st.session_state.current_transcript:
+            st.markdown(
+                f"""
+                <div style="padding: 10px; border-radius: 5px; background-color: #f0f2f6; margin-bottom: 10px;">
+                    <strong>あなた:</strong> {st.session_state.current_transcript}
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
+        
+        if st.session_state.current_response:
+            st.markdown(
+                f"""
+                <div style="padding: 10px; border-radius: 5px; background-color: #e6f7ff; margin-bottom: 10px;">
+                    <strong>AI:</strong> {st.session_state.current_response}
+                </div>
+                """, 
+                unsafe_allow_html=True
+            )
     
-    # 自動更新の処理
-    if auto_refresh:
-        with update_placeholder:
-            # ファイルの更新時刻を確認
-            try:
-                current_file_modified_time = os.path.getmtime(_STATE_FILE) if os.path.exists(_STATE_FILE) else 0
-            except:
-                current_file_modified_time = 0
-            
-            # 応答生成中または最後の更新から1秒以上経過している場合は再読み込み
-            if st.session_state.is_generating or current_file_modified_time > file_modified_time or time.time() - st.session_state.last_update_time > 1:
-                st.session_state.last_update_time = time.time()
-                time.sleep(0.1)
-                st.rerun()
+    with tab2:
+        # ターン判定結果の表示
+        st.subheader("ターン判定結果")
+        
+        # 録音中の場合はリアルタイム情報を表示
+        if st.session_state.is_listening:
+            st.info("🎤 リアルタイムターン判定中...")
+        
+        if "turn_detection_results" in st.session_state and st.session_state.turn_detection_results:
+            for result in reversed(st.session_state.turn_detection_results):
+                continue_val = result["continue_conversation"]
+                color = "green" if continue_val else "red"
+                icon = "🔄" if continue_val else "✅"
+                
+                # 最新の結果には「リアルタイム」マークを付ける
+                is_latest = (result == st.session_state.turn_detection_results[-1])
+                latest_mark = "⚡ 最新: " if is_latest else ""
+                
+                st.markdown(
+                    f"""
+                    <div style="margin-bottom:10px; padding:10px; border-left:4px solid {color}; background-color:rgba({0 if continue_val else 255}, {255 if continue_val else 0}, 0, 0.1)">
+                        <strong>{icon} {latest_mark}{"会話継続" if continue_val else "会話完了"}:</strong> {result["transcript"]}
+                        <br><small>相槌: "{result["acknowledgement"]}"</small>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
+        else:
+            st.info("まだターン判定結果はありません")
+    
+    with tab3:
+        # 会話履歴の表示
+        st.subheader("会話履歴")
+        
+        if st.session_state.transcripts and st.session_state.responses:
+            for i in range(min(len(st.session_state.transcripts), len(st.session_state.responses))):
+                st.markdown(
+                    f"""
+                    <div style="padding: 10px; border-radius: 5px; background-color: #f0f2f6; margin-bottom: 5px;">
+                        <strong>あなた:</strong> {st.session_state.transcripts[i]}
+                    </div>
+                    <div style="padding: 10px; border-radius: 5px; background-color: #e6f7ff; margin-bottom: 15px;">
+                        <strong>AI:</strong> {st.session_state.responses[i]}
+                    </div>
+                    """, 
+                    unsafe_allow_html=True
+                )
+        else:
+            st.info("まだ会話履歴はありません")
+
+    # UIの更新を処理するプレースホルダー
+    ui_placeholder = st.empty()
+    
+    # 定期的な更新のためのカウンター
+    if "update_counter" not in st.session_state:
+        st.session_state.update_counter = 0
+    
+    # 定期的に更新（これはメインスレッドで実行される）
+    st.session_state.update_counter += 1
+    
+    # グローバル変数からセッション状態に値をコピー
+    if _current_transcript:
+        st.session_state.current_transcript = _current_transcript
+    if _current_response:
+        st.session_state.current_response = _current_response
 
 if __name__ == "__main__":
     logger.info("アプリケーションを起動します。")
